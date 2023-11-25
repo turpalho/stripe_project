@@ -20,7 +20,6 @@ Make a copy of .env.dist and remove .dist:
     .env
     .env.dist
 ```
-Add STRIPE_SECRET_KEY adn STRIPE_PUBLIC_KEY in .env file
 
 Get stripe keys in stripe dashboard [Dashboard](https://dashboard.stripe.com/).
 Assign the token to a variable in the .env file and your user id to a vatiable "ADMINS":
