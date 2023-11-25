@@ -1,0 +1,51 @@
+version: '3.8'
+
+volumes:
+  postgres_data:
+  static_volume:
+  .:
+
+services:
+  web:
+    build: .
+    image: ${APP_NAME}_image
+    container_name: ${APP_NAME}_container
+    volumes:
+      - static_volume:/web/staticfiles
+      - .:/web
+    expose:
+      - 8000
+    ports:
+      - "8000:8000"
+    env_file:
+      - ".env"
+    depends_on:
+      - db
+    entrypoint: /bin/sh /web/bootstrap.sh
+
+  db:
+    image: postgres:15.1-alpine
+    container_name: "${APP_NAME}_postgres_db"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    expose:
+      - 5432
+    ports:
+      - "5432:5432"
+    env_file:
+      - ".env"
+    user: ${POSTGRES_USER}
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+
+  nginx:
+    image: nginx:1.25
+    container_name: "${APP_NAME}_nginx"
+    volumes:
+      - static_volume:/web/staticfiles
+    ports:
+      - "80:80"
+    depends_on:
+      - web
