@@ -21,8 +21,8 @@ Make a copy of .env.dist and remove .dist:
     .env.dist
 ```
 
-Get stripe keys in stripe dashboard [Dashboard](https://dashboard.stripe.com/).
-Assign the token to a variable in the .env file and your user id to a vatiable "ADMINS":
+Get stripe keys on your [Dashboard](https://dashboard.stripe.com/).
+Assign the following environment variables in the .env file:
 ```
     STRIPE_SECRET_KEY=your_public_key
     STRIPE_PUBLIC_KEY=your_secret_key
@@ -39,7 +39,7 @@ Run docker-compose
 ```
 
 
-Create superuser to use Django admin:
+Create a superuser to use Django admin:
 
 ```
     docker exec -it --env PYTHONUNBUFFERED=1 stripe_container python manage.py createsuperuser
