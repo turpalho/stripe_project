@@ -48,10 +48,10 @@ Create a superuser to use Django admin:
 Go to the admin panel and create an item in the Items model:
 
 ```
-    [localhost:8000/admin](http://localhost:8000/admin)
+    http://localhost:8000/admin
 ```
 
 Then follow the link:
 ```
-    [localhost:8000/item/1](http://localhost:8000/item/1)
+    http://localhost:8000/item/1
 ```
