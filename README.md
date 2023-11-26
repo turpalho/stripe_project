@@ -44,3 +44,14 @@ Create a superuser to use Django admin:
 ```
     docker exec -it --env PYTHONUNBUFFERED=1 stripe_container python manage.py createsuperuser
 ```
+
+Go to the admin panel and create an item in the Items model:
+
+```
+    [localhost:8000/admin](http://localhost:8000/admin)
+```
+
+Then follow the link:
+```
+    [localhost:8000/item/1](http://localhost:8000/item/1)
+```
